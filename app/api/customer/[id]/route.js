@@ -1,4 +1,4 @@
-import dbConnect from '@/lib/dbConnect';
+
 import Customer from '@/models/Customer';
 
 // GET /api/customer/[id] - Fetch a customer by ID
@@ -6,7 +6,7 @@ export async function GET(request, { params }) {
   const { id } = params;
 
   try {
-    await dbConnect(); // Connect to MongoDB
+    await connectToDatabase(); // Connect to MongoDB
 
     const customer = await Customer.findById(id); // Find customer by ID
 
@@ -29,7 +29,7 @@ export async function DELETE(request, { params }) {
   const { id } = params;
 
   try {
-    await dbConnect(); // Connect to MongoDB
+    await connectToDatabase(); // Connect to MongoDB
 
     const customer = await Customer.findByIdAndDelete(id); // Find and delete customer by ID
 
